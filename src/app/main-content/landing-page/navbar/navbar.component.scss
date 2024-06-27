@@ -1,0 +1,161 @@
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 110px;
+    max-width: 1440px;
+    width: 100%;
+    padding: 37px 100px;
+    color: white;
+    font-family: 'Poppins';
+    background-color: #141D2F;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    max-width: 1440px;
+    width: 100%;
+    .logo{
+        z-index: 10;
+        font-size: 36px;
+        font-weight: 700;
+        &:hover{
+            cursor: pointer;
+        }
+        .s1{
+            color:#9747FF ;
+        }
+        .s2{
+            color:#70E61C ;
+        }
+    }
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 29px;
+    font-size: 24px;
+    font-weight: 400;
+    
+    a {
+        text-decoration: none;
+        color: white;
+        position: relative;
+        &:hover{
+            cursor: pointer;
+            color: #70E61C;
+        }
+      }
+     
+      span {
+        position: relative;
+        display: inline-block;
+      }
+      
+      span::after {
+        content: '';
+        position: absolute;
+        bottom: -2px; 
+        left: 0;
+        width: 4ch; 
+        border-bottom: 2px solid transparent; 
+        transition: border-color 0.3s;
+      }
+     
+      a:hover span::after {
+        border-color: #9747FF; 
+      }
+    
+}
+
+
+.menuBurger {
+    display: none;
+    svg{
+        width: 30px;
+        height: 27.72px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .close{
+        z-index: 10;
+    }
+}
+
+@media (max-width: 1200px ){
+    nav {
+        padding: 37px 50px;
+    }
+}
+@media (max-width: 1100px ){
+    nav {
+        padding: 37px 25px;
+    }
+}
+
+@media (max-width: 750px){
+    .menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba($color: #141D2F, $alpha: 0.75);
+        animation: MenuSlideIn 0.25s ease-in-out;
+    }
+
+    .slideOut{
+        animation: MenuSlideOut 0.3s ease-in-out;
+    }
+
+    .menuBurger{
+        display: flex;
+    }
+}
+
+@keyframes MenuSlideIn {
+0%{
+    left: 100%;
+}
+100%{
+    left: 0%;
+    transform: translateX(0);
+}
+}
+
+@keyframes MenuSlideOut {
+0%{
+    left: 0%;
+}
+100%{
+    left: 100%;
+    transform: translateX(100%);
+}
+}
+
+.none {
+    display: none;
+}

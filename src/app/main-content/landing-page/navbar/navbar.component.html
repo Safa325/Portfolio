@@ -1,0 +1,23 @@
+<nav>
+    <div class="navbar">
+        <div class="logo"><a href="#landing-page">S<span class="s1">a</span>f<span class="s2">a</span></a></div>
+    <div class="menu" [class.none]="isMenuHidden" [class.slideOut]="closeAnimation" >
+        <a href="#about-me"><span>About me</span></a>
+        <a href="#"><span>Skills</span></a>
+        <a href="#"><span>Portfolio</span></a>
+        <a [class.none]="!menuBurgerOpen"  href="#"><span>Contact</span></a>
+    </div>
+    <div class="menuBurger" >
+        <svg [class.none]="!isMenuHidden" (click)="showMenu()" width="32" height="31" viewBox="0 0 32 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1.5127H31" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M1 15.5127H31" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M1 29.5127H31" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+
+        <svg class="close" [class.none]="isMenuHidden" (click)="closeMenu()" width="35" height="32" viewBox="0 0 35 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 5L27.6506 26.7612" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 27L27.46 5.05939" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </div>
+    </div>
+</nav>
