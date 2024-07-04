@@ -1,5 +1,6 @@
 
 section {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -9,7 +10,7 @@ section {
     color: white;
     font-family: 'Poppins';
     margin: auto;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .container{

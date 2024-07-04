@@ -1,0 +1,304 @@
+section{
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    background-color: #141D2F;
+    overflow-x: hidden;
+}
+
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 110px;
+    max-width: 1920px;
+    padding: 8px 100px;
+    width: 100%;
+    height: calc(100% - 110px);
+    z-index: 5;
+
+    @media (max-width:1200px){
+        padding: 8px 50px;
+    }
+
+    @media (max-width:1100px){
+        padding: 8px 25px;
+    }
+
+    @media (max-width:360px){
+        padding: 8px 16px;
+    }
+
+}
+
+.title-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 572px;
+    width: 100%;
+    max-height: 181px;
+    height: 100%;
+    
+    .title-header{
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        
+        .bar{
+            position: absolute;
+            left: -100px;
+            flex: 1;
+            max-width: 16%;
+            min-width: 95px;
+            width: 100%;
+            height: 1px;
+            border: 2px solid #9747FF;
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-size: 90px;
+            margin-block-end: 0;
+            margin-block-start: 0;
+        }
+
+        span{
+            font-size: 16px;
+        }
+
+    }
+
+    @media (max-width:500px) {
+        
+        .title-header{
+
+            h1 {
+                font-size: 45px;
+            }
+        }
+
+    }
+
+}
+
+.portfolio-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    padding: 97px 0px;
+    flex-wrap: wrap;
+    gap: 35px;
+
+    .portfolio {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 600px;
+        width: 100%;
+        max-height: 600px;
+        height: auto;
+        border: 1px solid #70E61C ;
+        border-radius: 15px;
+        z-index: 5;
+        background-color: #141D2F;
+        overflow: hidden;
+        &:hover img {
+            transition: 0.5s ease-in;
+            scale: 1.7;
+            transform: translateY(-3%);
+        }
+
+        &:hover .portfolio-description{
+            transition: 0.5s ease-in;
+            scale: 1;
+        }
+
+        img{
+            transition: transform 0.75s ease-out;
+            max-width:calc(100% - 32px) ;
+            width: 100%;
+            height: auto;
+            
+        }
+        
+        .shadow {
+            position: absolute;
+            max-width: 580px;
+            width: 100%;
+            height: auto;
+            bottom: 0;
+            
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+    }
+
+}
+
+.portfolio-description{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    scale: 0;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+
+    .dc-top {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50%;
+        width: 100%;
+        gap: 86px;
+        
+    }
+
+    .dc-bottom{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 60%;
+        background-color: white;
+        border-radius: 15px;
+        padding: 66px 32px;
+        gap: 27px;
+
+        h2{
+            font-size: 32px;
+            color: #4B47FF;
+        }
+
+        span{
+            font-size: 24px;
+            color: #141D2F;
+        }
+
+        .green {
+            color: #70E61C;
+        }
+    }
+
+    @media (max-width:600px) {
+        
+        .dc-bottom{
+            padding: 16px;
+            gap: 8px;
+            h2 {
+                font-size: clamp(24px,5.33vw,32px);
+            }
+            span {
+                font-size: clamp(16px,4vw,24px);
+            }
+        }
+    }
+
+    @media (max-width: 460px) {
+        .dc-top {
+            gap: 48px;
+        }
+    }
+
+    @media (max-width:360px) {
+        
+        .dc-bottom{
+            padding: 8px;
+            gap: 6px;
+            h2 {
+                font-size: 20px;
+            }
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.btn-git{
+    height: 58px;
+    width: 137px;
+    button{
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid #1CDAE6;
+        border-radius: 10px;
+        font-size: 24px;
+        &:hover{
+            cursor: pointer;
+            background-color: #1CDAE6;
+        }
+    }
+    @media (max-width:460px) {
+        height: 40px;
+        width: 106px;
+        button{
+            font-size: 16px;
+            border-radius: 8px;
+        }
+    }
+}
+
+.btn-link {
+    height: 58px;
+    width: 137px;
+    button{
+        height: 100%;
+        width: 100%;
+        background-color: #9747FF;
+        border: 1px solid #9747FF;
+        border-radius: 10px;
+        font-size: 24px;
+        &:hover{
+            cursor: pointer;
+            background-color: #70E61C;
+            border: none;
+        }
+    }
+    @media (max-width:460px) {
+        height: 40px;
+        width: 106px;
+        button{
+            font-size: 16px;
+            border-radius: 8px;
+        }
+    }
+}
+
+.bk-shadow1{
+    position: absolute;
+    right: 0;
+    top:0;
+}
+
+.bk-shadow2{
+    position: absolute;
+    left: 0;
+    bottom:-100px;
+}

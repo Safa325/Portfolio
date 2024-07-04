@@ -33,7 +33,6 @@ checkInnertWidth(width:number){
   if (width > 750){
     this.menuBurgerOpen = false
   }
-  console.log(width,this.isMenuHidden,this.menuBurgerOpen)
 }
 
 showMenu(){

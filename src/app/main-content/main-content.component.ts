@@ -5,6 +5,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NavbarComponent } from './landing-page/navbar/navbar.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SkillsComponent } from './skills/skills.component';
+import { ContactComponent } from './contact/contact.component';
 
 @Component({
   selector: 'app-main-content',
@@ -16,6 +17,7 @@ import { SkillsComponent } from './skills/skills.component';
     SkillsComponent,
     NavbarComponent,
     PortfolioComponent,
+    ContactComponent,
   ],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.scss'

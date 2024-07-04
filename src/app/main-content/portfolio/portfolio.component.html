@@ -1,11 +1,42 @@
 <section id="portfolio">
     <div class="container">
         <div class="title-container">
-            <h1>Portfolio</h1>
+            <div class="title-header">
+                <div class="bar"></div><h1>Portfolio</h1>
+            </div>
             <span>
                 Explore a selection of my work here - Interact with projects to see my skills in action.
             </span>
         </div>
+        <div class="portfolio-container">
+            <div class="portfolio" *ngFor="let portfolio of portfolios">
+
+                <img src="{{ portfolio.img }}" alt="{{ portfolio.title }}">
+                <div class="shadow">
+                    <img src="/assets/img/Vector 5.svg" alt="shadow">
+                </div>
+                <div class="portfolio-description">
+                    <div class="dc-top">
+                        <div class="btn-git">
+                            <button>Github</button>
+                        </div>
+                        <div class="btn-link">
+                            <button>Live test</button>
+                        </div>
+                    </div>
+                    <div class="dc-bottom">
+                        <h2>{{ portfolio.title }}</h2>
+                        <span>{{ portfolio.description }}</span>
+                        <span class="green">{{ portfolio.skills }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
+    <div class="bk-shadow1">
+        <img src="/assets/img/Blue shadow 1.svg" alt="">
+    </div>
+    <div class="bk-shadow2">
+        <img src="/assets/img/Green shadow.svg" alt="">
+    </div>
 </section>
