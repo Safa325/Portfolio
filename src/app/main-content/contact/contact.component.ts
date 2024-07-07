@@ -1,50 +1,87 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { FormBuilder, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  policyAccepted: boolean = false;
-  nameValue: Boolean = false;
-  emailValue: Boolean = false;
-  messageValue: Boolean = false;
+  @ViewChild('formElement') formElement?: ElementRef<HTMLFormElement>;
 
+  http = inject(HttpClient)
+
+  policyAccepted: boolean = false;
+  registerForm = this.fb.group({
+    name:['',Validators.required],
+    email:['',[Validators.required,Validators.email]],
+    textMessage:['',Validators.required],
+  })
+  isSubmited = false
+  mailTest = true;
+  post = {
+    endPoint: 'https://shamarisafa.ch.w01f3b16.kasserver.com/sendMail.php',
+    body: (payload: any) => JSON.stringify(payload),
+    options: {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  };
+  
+  constructor(private fb: FormBuilder){
+
+  }
+
+  onSubmit() {
+    this.isSubmited = true;
+    if (this.registerForm.valid) {
+      console.log('submitted');
+      this.http.post(this.post.endPoint, this.post.body(this.registerForm.value))
+        .subscribe({
+          next: (response) => {
+            this.registerForm.reset(this.registerForm.value);
+          },
+          error: (error) => {
+            console.error(error);
+          },
+          complete: () => console.info('send post complete'),
+        });
+    } else if (this.isSubmited && this.registerForm.valid && this.mailTest) {
+      this.registerForm.reset(this.registerForm.value);
+    }
+  }
+
+ 
+  errorFc(id: string) {
+    const control = this.registerForm.get(id);
+    return control && control.invalid && (control.dirty || control.touched || this.isSubmited);
+  }
+
+  errorFcMessage(id: string) {
+    const control = this.registerForm.get(id);
+    return control && control.hasError('required') && (control.dirty || control.touched || this.isSubmited);
+  }
+
+  succesFcMessage(id: string) {
+    const control = this.registerForm.get(id);
+    return control && !control.invalid && (control.dirty || control.touched || this.isSubmited);
+  }
+  
   toggleSubmitState() {
     this.policyAccepted = !this.policyAccepted;
     if(this.policyAccepted){
       this.hidePolicyMessage()
     }
   }
-
-  emptyCheck(id:string){
-    const input = (document.getElementById(id) as HTMLInputElement).value;
-    if (input === '') {
-      if (id === 'name') {
-        this.nameValue = false;
-      } if (id === 'email') {
-        this.emailValue = false;
-      } if (id === 'message') {
-        this.messageValue = false;
-      }
-    } else {
-      if (id === 'name') {
-        this.nameValue = true;
-        console.log(input)
-      } if (id === 'email') {
-        this.emailValue = true;
-        console.log(input)
-      } if (id === 'message') {
-        this.messageValue = true;
-        console.log(input)
-      }
-    }
-  }
-
 
   showPolicyMessage() {
     const policyMessage = document.getElementById('policyMessage');
@@ -60,34 +97,4 @@ export class ContactComponent {
     }
   }
 
-  showEmptyMessage() {
-    const fields = [
-      { id: 'name', value: this.nameValue, messageId: 'messageName' },
-      { id: 'email', value: this.emailValue, messageId: 'messageEmail' },
-      { id: 'message', value: this.messageValue, messageId: 'messageMessage' }
-    ];
-  
-    fields.forEach(field => {
-      const input = document.getElementById(field.id);
-      const message = document.getElementById(field.messageId);
-      if (!field.value && message) {
-        message.classList.remove('none');
-        input?.classList.add('border-red');
-      } else {
-        message?.classList.add('none');
-        input?.classList.remove('border-red');
-      }
-    });
-  }
-
-  onSubmit(event:Event) {
-    event.preventDefault()
-
-    if (!this.nameValue || !this.emailValue || !this.messageValue)  {
-      this.showEmptyMessage();
-    } else {
-    
-     
-    }
-  }
 }

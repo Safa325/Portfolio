@@ -14,51 +14,46 @@
                 <span>Need a Frontend developer? <b>Contact me!</b></span>
             </div>
             <div class="content-right">
-                <!-- <form >
+                <form  [formGroup]="registerForm"  (ngSubmit)="onSubmit()" >
                     <div class="input-container">
-                        <img  src="/assets/img/Frame.svg" alt="" >
-                        <input type="text" placeholder="Your name" class="field" id="name" (blur)="emptyCheck('name')">
-                        <span class="message none" id="messageName">Your name is required </span>
+                        <img *ngIf="succesFcMessage('name')" src="/assets/img/Frame (1).svg" alt="">
+                        <img *ngIf="errorFcMessage('name')" src="/assets/img/Frame.svg" alt="">
+                        <input type="text" 
+                            placeholder="Your name" 
+                            class="field" 
+                            formControlName="name" 
+                            [class.border-red]="errorFc('name')"
+                            [class.border-green]="succesFcMessage('name')"
+                            >
+                        <span *ngIf="errorFcMessage('name')" class="message" id="messageName">Your name is required</span>
                     </div>
+
                     <div class="input-container">
-                        <img  src="/assets/img/Frame.svg" alt="" >
-                        <input type="email" placeholder="Your email" class="field" id="email" (blur)="emptyCheck('email')">
-                        <span class="message none" id="messageEmail">Your email is required</span>
-                    </div>
-                    <div class="input-container">
-                        <img src="/assets/img/Frame.svg" alt="" >
-                        <textarea name="Your message" id="" cols="30" rows="10" class="text-field" placeholder="Your message" id="message" (blur)="emptyCheck('message')"></textarea>
-                        <span class="message none" id="messageMessage">Your message is empty</span>
-                    </div>
-                    
-                    <div class="checkbox-container">
-                        <div class="checkbox">
-                            <input type="checkbox" id="policyCheckbox" name="policy" (change)="toggleSubmitState()" required><span>I've read the<a href="#"> privacy policy</a> and agree to the processing of my data as outlined</span>
-                        </div>
-                        <span class="message none" id="policyMessage">Please accept the privacy policy.</span>
-                    </div>
-                   
-                    <button  [disabled]="!policyAccepted" [ngClass]="{'enabled-btn': policyAccepted, 'disabled-btn': !policyAccepted}" (mouseover)="showPolicyMessage()">Send message :)</button>
-                   
-                </form> -->
-                
-                <form (submit)="onSubmit($event)">
-                    <div class="input-container">
-                    <img src="/assets/img/Frame.svg" alt="">
-                    <input type="text" placeholder="Your name" class="field" id="name" (blur)="emptyCheck('name')">
-                    <span class="message none" id="messageName">Your name is required</span>
+                        <img *ngIf="succesFcMessage('email')" src="/assets/img/Frame (1).svg" alt="">
+                        <img *ngIf="errorFc('email')" src="/assets/img/Frame.svg" alt="">
+                        <input type="email" 
+                            placeholder="Your email" 
+                            class="field" 
+                            formControlName="email" 
+                            [class.border-red]="errorFc('email')"
+                            [class.border-green]="succesFcMessage('email')">
+                            
+                        <span *ngIf="errorFc('email')" class="message" id="messageEmail">Your email is required</span>
                     </div>
                     <div class="input-container">
-                    <img src="/assets/img/Frame.svg" alt="">
-                    <input type="email" placeholder="Your email" class="field" id="email" (blur)="emptyCheck('email')" >
-                    <span class="message none" id="messageEmail">Your email is required</span>
+                        <img *ngIf="succesFcMessage('textMessage')" src="/assets/img/Frame (1).svg" alt="">
+                        <img *ngIf="errorFcMessage('textMessage')" src="/assets/img/Frame.svg" alt="">
+                        <textarea 
+                            placeholder="Your message" 
+                            class="text-field" 
+                            formControlName="textMessage"
+                            [class.border-red]="errorFc('textMessage')"
+                            [class.border-green]="succesFcMessage('textMessage')"
+                            >
+                        </textarea>
+                        <span *ngIf="errorFcMessage('textMessage')" class="message" id="messageMessage">Your message is empty</span>
                     </div>
-                    <div class="input-container">
-                    <img src="/assets/img/Frame.svg" alt="">
-                    <textarea placeholder="Your message" class="text-field" id="message" (blur)="emptyCheck('message')" ></textarea>
-                    <span class="message none" id="messageMessage">Your message is empty</span>
-                    </div>
-                
+               
                     <div class="checkbox-container">
                     <div class="checkbox">
                         <input type="checkbox" id="policyCheckbox" name="policy" (change)="toggleSubmitState()" >
@@ -69,10 +64,9 @@
                 
                     <button type="submit" [disabled]="!policyAccepted" 
                             [ngClass]="{'enabled-btn': policyAccepted, 'disabled-btn': !policyAccepted}" 
-                            (mouseover)="showPolicyMessage()" (click)="showEmptyMessage()" >Send message :)</button>
+                            (mouseover)="showPolicyMessage()" >Send message :)</button>
                 </form>
-  
-            </div>
+              </div>
         </div>
         <a class="back" href="#"><img src="/assets/img/UPbtn.svg" alt="arrow up"></a>
     </div>

@@ -147,7 +147,7 @@ section{
     width: 100%;
     height: auto;
     img{
-        display: none;
+        display: flex;
         position: absolute;
         right: 12.5px;
         top: 12.5px;
@@ -279,6 +279,16 @@ section{
 
         .border-red{
             border: 1px solid #E61C40;
+            &:hover{
+                border: 1px solid #E61C40;
+            }
+        }
+
+        .border-green{
+            border: 1px solid #70E61C;
+            &:hover{
+                border: 1px solid #70E61C;
+            }
         }
 
         .enabled-btn {
