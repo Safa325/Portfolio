@@ -6,6 +6,7 @@ section{
     justify-content: center;
     align-items: center;
     width: 100vw;
+    min-height: 625px;
     height: 100vh;
     background-color: #141D2F;
     overflow: hidden;
@@ -94,6 +95,9 @@ animation: button 2s ease 75ms;
     @media (max-height:900px) {
         margin-top: 48px;
     }
+    @media (max-height:700px) {
+        margin-top: 24px;
+    }
 }
 
 #shadow1{
@@ -106,6 +110,12 @@ animation: button 2s ease 75ms;
         top: 120px;
         height: 600px; 
         width: 600px;
+    }
+    @media (max-width: 650px) {
+        top: 110px;
+        left: -180px;
+        height: 400px; 
+        width: 400px;
     }
     
 }
@@ -120,6 +130,12 @@ animation: button 2s ease 75ms;
         right: -400px;
         height: 600px; 
         width: 600px;
+    }
+    @media (max-width: 650px) {
+        top: 400px;
+        right: -200px;
+        height: 400px; 
+        width: 400px;
     }
 }
 
@@ -208,6 +224,8 @@ animation: button 2s ease 75ms;
         }
     }
 }
+
+
 
 @keyframes fallAndBounce {
     0% {

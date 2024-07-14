@@ -1,0 +1,31 @@
+.card{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    span{
+        font-size: 1.5vw;
+        animation: bottom-mid 0.5s ease-in;
+        background-color: #000000;
+        border-radius: 5px;
+        height: auto;
+        width: auto;
+        padding: 8px 16px;
+    }
+}
+
+@keyframes bottom-mid {
+    0%{
+        transform: translateY(1000%);
+    }
+    100%{
+        transform: translateY(50%);
+    }
+}

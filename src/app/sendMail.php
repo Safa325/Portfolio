@@ -8,20 +8,19 @@ switch ($_SERVER['REQUEST_METHOD']) {
         exit;
         case("POST"): //Send the email;
             header("Access-Control-Allow-Origin: *");
-            header("Content-Type: application/json");
             // Payload is not send to $_POST Variable,
             // is send to php:input as a text
             $json = file_get_contents('php://input');
             //parse the Payload from text format to Object
             $params = json_decode($json);
-   
+    
             $email = $params->email;
             $name = $params->name;
-            $textMessage = $params->message;
+            $message = $params->message;
    
             $recipient = 'shamarisafa@gmail.com';  
             $subject = "Contact From <$email>";
-            $message = "From:" . $name . "<br>" . $textMessage ;
+            $message = "From:" . $name . "<br>" . $message ;
     
             $headers   = array();
             $headers[] = 'MIME-Version: 1.0';

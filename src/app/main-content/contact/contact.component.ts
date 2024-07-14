@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { PopUpComponent } from './dialog/pop-up/pop-up.component';
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +12,8 @@ import { FormBuilder, FormsModule, NgForm, ReactiveFormsModule, Validators } fro
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
+    PopUpComponent,
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
@@ -23,12 +27,13 @@ export class ContactComponent {
   registerForm = this.fb.group({
     name:['',Validators.required],
     email:['',[Validators.required,Validators.email]],
-    textMessage:['',Validators.required],
+    message:['',Validators.required],
   })
-  isSubmited = false
+  isSubmited = false;
   mailTest = true;
+  showMessage = false;
   post = {
-    endPoint: 'https://shamarisafa.ch.w01f3b16.kasserver.com/sendMail.php',
+    endPoint: 'https://www.shamarisafa.ch/sendMail.php',
     body: (payload: any) => JSON.stringify(payload),
     options: {
       headers: {
@@ -36,19 +41,24 @@ export class ContactComponent {
       },
     },
   };
+
+  contactData = {
+  }
   
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder, private router: Router){
 
   }
 
   onSubmit() {
     this.isSubmited = true;
     if (this.registerForm.valid) {
-      console.log('submitted');
+      this.dataToJson()
+      this.isSubmited = false;
       this.http.post(this.post.endPoint, this.post.body(this.registerForm.value))
         .subscribe({
           next: (response) => {
-            this.registerForm.reset(this.registerForm.value);
+            this.registerForm.reset();
+            this.showMessageFc()
           },
           error: (error) => {
             console.error(error);
@@ -56,10 +66,25 @@ export class ContactComponent {
           complete: () => console.info('send post complete'),
         });
     } else if (this.isSubmited && this.registerForm.valid && this.mailTest) {
-      this.registerForm.reset(this.registerForm.value);
+      this.registerForm.reset();
     }
   }
 
+  dataToJson(){
+    this.contactData = {
+      name: this.registerForm.value.name,
+      email: this.registerForm.value.email,
+      message: this.registerForm.value.message
+    }
+  }
+  
+
+  showMessageFc(){
+    this.showMessage = true
+    setTimeout(() => {
+      this.showMessage = false
+    }, 1000);
+  }
  
   errorFc(id: string) {
     const control = this.registerForm.get(id);

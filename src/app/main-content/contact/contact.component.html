@@ -1,10 +1,12 @@
 <section id="contact">
+    <app-pop-up *ngIf="showMessage"></app-pop-up>
     <div class="container">
         <div class="title">
             <h1>Contact</h1>
             <div class="bar"></div>
         </div>
         <div class="contact-content">
+            
             <div class="content-left">
                 <div class="content-title">
                     <div class="bar"></div>
@@ -41,23 +43,25 @@
                         <span *ngIf="errorFc('email')" class="message" id="messageEmail">Your email is required</span>
                     </div>
                     <div class="input-container">
-                        <img *ngIf="succesFcMessage('textMessage')" src="/assets/img/Frame (1).svg" alt="">
-                        <img *ngIf="errorFcMessage('textMessage')" src="/assets/img/Frame.svg" alt="">
+                        <img *ngIf="succesFcMessage('message')" src="/assets/img/Frame (1).svg" alt="">
+                        <img *ngIf="errorFcMessage('message')" src="/assets/img/Frame.svg" alt="">
                         <textarea 
                             placeholder="Your message" 
                             class="text-field" 
-                            formControlName="textMessage"
-                            [class.border-red]="errorFc('textMessage')"
-                            [class.border-green]="succesFcMessage('textMessage')"
+                            formControlName="message"
+                            [class.border-red]="errorFc('message')"
+                            [class.border-green]="succesFcMessage('message')"
                             >
                         </textarea>
-                        <span *ngIf="errorFcMessage('textMessage')" class="message" id="messageMessage">Your message is empty</span>
+                        <span *ngIf="errorFcMessage('message')" class="message" id="messageMessage">Your message is empty</span>
                     </div>
                
                     <div class="checkbox-container">
                     <div class="checkbox">
-                        <input type="checkbox" id="policyCheckbox" name="policy" (change)="toggleSubmitState()" >
-                        <span>I've read the<a href="#"> privacy policy</a> and agree to the processing of my data as outlined</span>
+                        <div class="checkbox-box">
+                            <input type="checkbox" id="policyCheckbox" name="policy" (change)="toggleSubmitState()" >
+                        </div>
+                        <span>I've read the<a routerLink="/privacy-policy"> privacy policy</a> and agree to the processing of my data as outlined</span>
                     </div>
                     <span class="message none" id="policyMessage">Please accept the privacy policy.</span>
                     </div>
@@ -68,6 +72,9 @@
                 </form>
               </div>
         </div>
-        <a class="back" href="#"><img src="/assets/img/UPbtn.svg" alt="arrow up"></a>
+        
     </div>
+    <img class="shadow" src="/assets/img/Purple shadow 2.svg" alt="shadow">
+    <a class="back" href="#"><img src="/assets/img/UPbtn.svg" alt="arrow up"></a>
+    
 </section>

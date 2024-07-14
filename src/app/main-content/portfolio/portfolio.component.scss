@@ -7,9 +7,9 @@ section{
     align-items: center;
     width: 100vw;
     min-height: 100vh;
-    height: auto;
+    max-height: max-content;
+    height: 100%;
     background-color: #141D2F;
-    overflow-x: hidden;
 }
 
 .container{
@@ -24,6 +24,7 @@ section{
     width: 100%;
     height: calc(100% - 110px);
     z-index: 5;
+    
 
     @media (max-width:1200px){
         padding: 8px 50px;
