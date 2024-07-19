@@ -6,6 +6,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { PrivacyPolicyComponent } from './side-content/privacy-policy/privacy-policy.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -15,7 +16,7 @@ import { PrivacyPolicyComponent } from './side-content/privacy-policy/privacy-po
     FooterComponent,
     MainContentComponent,
     NavbarComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

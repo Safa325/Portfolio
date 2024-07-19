@@ -6,6 +6,10 @@
         <a href="#skills"><span>Skills</span></a>
         <a href="#portfolio"><span>Portfolio</span></a>
         <a [class.none]="!menuBurgerOpen"  href="#contact"><span>Contact</span></a>
+        <div class="languege">
+            <a (click)="selectLanguage()" ><span [class.selected]="de">DE</span></a> |
+            <a (click)="selectLanguage()" ><span [class.selected]="en">EN</span></a>
+        </div>
     </div>
     <div class="menuBurger" >
         <svg [class.none]="!isMenuHidden" (click)="showMenu()" width="32" height="31" viewBox="0 0 32 31" fill="none" xmlns="http://www.w3.org/2000/svg">

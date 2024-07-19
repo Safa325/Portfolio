@@ -16,6 +16,8 @@ export class NavbarComponent {
 isMenuHidden: boolean = false;
 menuBurgerOpen: boolean = false;
 closeAnimation: boolean = false;
+en:boolean = true;
+de:boolean = false;
 
 constructor() {
   this.checkInnertWidth(innerWidth)
@@ -24,6 +26,16 @@ constructor() {
 @HostListener('window:resize', ['$event.target.innerWidth'])
 onResize(width: number) {
   this.checkInnertWidth(width)
+}
+
+selectLanguage(){
+  if(this.de === true){
+    this.en = true;
+    this.de = false;
+  }else{
+    this.de = true;
+    this.en = false;
+  }
 }
 
 checkInnertWidth(width:number){

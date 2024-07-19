@@ -37,6 +37,7 @@
                             placeholder="Your email" 
                             class="field" 
                             formControlName="email" 
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                             [class.border-red]="errorFc('email')"
                             [class.border-green]="succesFcMessage('email')">
                             
@@ -61,20 +62,20 @@
                         <div class="checkbox-box">
                             <input type="checkbox" id="policyCheckbox" name="policy" (change)="toggleSubmitState()" >
                         </div>
-                        <span>I've read the<a routerLink="/privacy-policy"> privacy policy</a> and agree to the processing of my data as outlined</span>
+                        <span>I've read the<a (click)="scrollToTop()" routerLink="/privacy-policy" > privacy policy</a> and agree to the processing of my data as outlined</span>
                     </div>
                     <span class="message none" id="policyMessage">Please accept the privacy policy.</span>
                     </div>
-                
+               
                     <button type="submit" [disabled]="!policyAccepted" 
                             [ngClass]="{'enabled-btn': policyAccepted, 'disabled-btn': !policyAccepted}" 
                             (mouseover)="showPolicyMessage()" >Send message :)</button>
                 </form>
               </div>
         </div>
-        
+        <a class="back" href="#"><img src="/assets/img/UPbtn.svg" alt="arrow up"></a> 
     </div>
     <img class="shadow" src="/assets/img/Purple shadow 2.svg" alt="shadow">
-    <a class="back" href="#"><img src="/assets/img/UPbtn.svg" alt="arrow up"></a>
     
+   
 </section>

@@ -42,7 +42,6 @@ nav{
 
 a{
     text-decoration: none;
-    color: white;
 }
 
 .menu {
@@ -53,15 +52,11 @@ a{
     font-size: 24px;
     font-weight: 400;
     
-    a {
+        a {
         text-decoration: none;
         color: white;
         position: relative;
-        &:hover{
-            cursor: pointer;
-            color: #70E61C;
         }
-      }
      
       span {
         position: relative;
@@ -81,7 +76,51 @@ a{
       a:hover span::after {
         border-color: #9747FF; 
       }
-    
+
+      a:hover span {
+        color: #70E61C; 
+      }
+      
+}
+
+.languege{
+    display: flex;
+    height: auto;
+    width: auto;
+    text-align: center;
+    gap: 8px;
+    a {
+        text-decoration: none;
+        color: white;
+        position: relative;
+        &:hover{
+            cursor: pointer;
+        }
+      }
+     
+      span {
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+      }
+      
+      span::after {
+        content: '';
+        position: absolute;
+        bottom: -2px; 
+        left: 0;
+        width: 1ch; 
+        border-bottom: 2px solid transparent; 
+        transition: border-color 0.3s;
+      }
+     
+      a:hover span::after {
+        border-color: #9747FF; 
+      }
+
+      .selected{
+        color: #70E61C;
+      }
 }
 
 

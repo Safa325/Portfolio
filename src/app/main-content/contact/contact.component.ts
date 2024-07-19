@@ -16,7 +16,7 @@ import { PopUpComponent } from './dialog/pop-up/pop-up.component';
     PopUpComponent,
   ],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+  styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
   @ViewChild('formElement') formElement?: ElementRef<HTMLFormElement>;
@@ -25,12 +25,11 @@ export class ContactComponent {
 
   policyAccepted: boolean = false;
   registerForm = this.fb.group({
-    name:['',Validators.required],
-    email:['',[Validators.required,Validators.email]],
-    message:['',Validators.required],
-  })
-  isSubmited = false;
-  mailTest = true;
+    name: ['', [Validators.required, Validators.minLength(4)]],
+    email: ['', [Validators.required, Validators.email]],
+    message: ['', [Validators.required, Validators.minLength(10)]],
+  });
+  isSubmitted = false;
   showMessage = false;
   post = {
     endPoint: 'https://www.shamarisafa.ch/sendMail.php',
@@ -42,69 +41,58 @@ export class ContactComponent {
     },
   };
 
-  contactData = {
-  }
-  
-  constructor(private fb: FormBuilder, private router: Router){
-
-  }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   onSubmit() {
-    this.isSubmited = true;
+    this.isSubmitted = true;
     if (this.registerForm.valid) {
-      this.dataToJson()
-      this.isSubmited = false;
+      this.isSubmitted = false;
       this.http.post(this.post.endPoint, this.post.body(this.registerForm.value))
         .subscribe({
           next: (response) => {
             this.registerForm.reset();
-            this.showMessageFc()
+            this.showMessageFc();
           },
           error: (error) => {
             console.error(error);
           },
           complete: () => console.info('send post complete'),
         });
-    } else if (this.isSubmited && this.registerForm.valid && this.mailTest) {
-      this.registerForm.reset();
+    } else {
+      console.error('Form is invalid');
     }
   }
 
-  dataToJson(){
-    this.contactData = {
-      name: this.registerForm.value.name,
-      email: this.registerForm.value.email,
-      message: this.registerForm.value.message
-    }
+  scrollToTop() {
+    window.scrollTo(0, 0);
   }
-  
 
-  showMessageFc(){
-    this.showMessage = true
+  showMessageFc() {
+    this.showMessage = true;
     setTimeout(() => {
-      this.showMessage = false
+      this.showMessage = false;
     }, 1000);
   }
- 
+
   errorFc(id: string) {
     const control = this.registerForm.get(id);
-    return control && control.invalid && (control.dirty || control.touched || this.isSubmited);
+    return control && control.invalid && (control.dirty || control.touched || this.isSubmitted);
   }
 
   errorFcMessage(id: string) {
     const control = this.registerForm.get(id);
-    return control && control.hasError('required') && (control.dirty || control.touched || this.isSubmited);
+    return control && control.hasError('required') && (control.dirty || control.touched || this.isSubmitted);
   }
 
   succesFcMessage(id: string) {
     const control = this.registerForm.get(id);
-    return control && !control.invalid && (control.dirty || control.touched || this.isSubmited);
+    return control && !control.invalid && (control.dirty || control.touched || this.isSubmitted);
   }
-  
+
   toggleSubmitState() {
     this.policyAccepted = !this.policyAccepted;
-    if(this.policyAccepted){
-      this.hidePolicyMessage()
+    if (this.policyAccepted) {
+      this.hidePolicyMessage();
     }
   }
 
@@ -121,5 +109,4 @@ export class ContactComponent {
       policyMessage.classList.add('none');
     }
   }
-
 }
