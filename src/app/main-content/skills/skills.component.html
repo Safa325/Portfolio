@@ -19,23 +19,31 @@
             <div class="icon">
                 <img src="/assets/img/Column 4.svg" alt="">
             </div>
-            
+           
         </div>
         <div class="skills-content">
             <div class="content-header">
-                <h1>Skills</h1>
-                <div class="bar"></div>
+                <h1 *ngIf="(en$ | async)">Skills</h1>
+                <h1 *ngIf="(de$ | async)" [class.bar-width]="(de$ | async)">Fähigkeiten</h1>
+                <div [class.bar-width]="(de$ | async)" class="bar"></div>
             </div>
             <div class="content-mid">
-                <span>
+                <span *ngIf="(en$ | async)">
                     I have gained experience in building projects with various front end technologies and concepts.
+                </span>
+                <span *ngIf="(de$ | async)">
+                    Ich habe Erfahrungen im Aufbau von Projekten mit verschiedenen Frontend-Technologien und Konzepten gesammelt.
                 </span>
             </div>
             <div class="content-bottom">
-                <a href="#contact"><button>
-                    Get in touch
-                </button></a>
-                
+                <a href="#contact">
+                    <button *ngIf="(en$ | async)">
+                        Get in touch
+                    </button>
+                    <button *ngIf="(de$ | async)">
+                        Kontaktier mich
+                    </button>
+                </a>
             </div>
         </div>
     </div>

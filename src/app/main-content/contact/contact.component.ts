@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { LanguageService } from '../../language.service';
 import { PopUpComponent } from './dialog/pop-up/pop-up.component';
 
 @Component({
@@ -41,7 +42,11 @@ export class ContactComponent {
     },
   };
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  en$ = this.languageService.en$;
+  de$ = this.languageService.de$;
+
+  
+  constructor(private fb: FormBuilder, private router: Router, private languageService: LanguageService) { }
 
   onSubmit() {
     this.isSubmitted = true;

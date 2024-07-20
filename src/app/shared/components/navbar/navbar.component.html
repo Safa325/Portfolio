@@ -2,13 +2,24 @@
     <div class="navbar">
         <div class="logo"><a href="#landing-page">S<span class="s1">a</span>f<span class="s2">a</span></a></div>
     <div class="menu" [class.none]="isMenuHidden" [class.slideOut]="closeAnimation" >
-        <a href="#about-me"><span>About me</span></a>
-        <a href="#skills"><span>Skills</span></a>
-        <a href="#portfolio"><span>Portfolio</span></a>
-        <a [class.none]="!menuBurgerOpen"  href="#contact"><span>Contact</span></a>
+        <a href="#about-me">
+            <span  *ngIf="(en$ | async)">About me</span>
+            <span  *ngIf="(de$ | async)">Über mich</span>
+        </a>
+        <a href="#skills">
+            <span *ngIf="(en$ | async)">Skills</span>
+            <span *ngIf="(de$ | async)">Fähigkeiten</span>
+        </a>
+        <a href="#portfolio">
+            <span>Portfolio</span>
+        </a>
+        <a [class.none]="!menuBurgerOpen"  href="#contact">
+            <span *ngIf="(en$ | async)">Contact</span>
+            <span *ngIf="(de$ | async)">Kontakt</span>
+        </a>
         <div class="languege">
-            <a (click)="selectLanguage()" ><span [class.selected]="de">DE</span></a> |
-            <a (click)="selectLanguage()" ><span [class.selected]="en">EN</span></a>
+            <a (click)="selectLanguage()" ><span [class.selected]="(de$ | async)">DE</span></a> |
+            <a (click)="selectLanguage()" ><span [class.selected]="(en$ | async)">EN</span></a>
         </div>
     </div>
     <div class="menuBurger" >

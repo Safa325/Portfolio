@@ -4,27 +4,38 @@
         <div class="container">
             <div class="content">
                 <div class="content-text">
-                    <h1>About me</h1>
+                    <h1 *ngIf="(en$ | async)">About me</h1>
+                    <h1 *ngIf="(de$ | async)">Über mich</h1>
+
                     <div class="content-1">
-                        <p>
-                            Hello and welcome to my website! I am thrilled that you've taken the time to visit. As a dedicated Frontend Developer based in Zürich, Switzerland, I thrive on solving problems and embracing new challenges.
+                        <p *ngIf="(en$ | async)">
+                           Hello and welcome to my website! I am thrilled that you've taken the time to visit. As a dedicated Frontend Developer based in Zürich, Switzerland, I thrive on solving problems and embracing new challenges.
+                        </p>
+                        <p *ngIf="(de$ | async)">
+                            Hallo und willkommen auf meiner Website! Ich freue mich, dass Sie sich die Zeit genommen haben, vorbeizuschauen. Als engagierter Frontend-Entwickler mit Sitz in Zürich, Schweiz, liebe ich es, Probleme zu lösen und neue Herausforderungen anzunehmen.
                         </p>
                     </div>
                     <div class="content-2">
                         <img src="/assets/img/bulb desktop.svg" alt="">
-                        <p>
+                        <p *ngIf="(en$ | async)">
                             My passion lies in crafting creative and effective solutions to enhance digital experiences. The diversity and dynamism of programming continually inspire me, driving me to innovate and excel.
+                        </p>
+                        <p *ngIf="(de$ | async)">
+                            Meine Leidenschaft liegt darin, kreative und effektive Lösungen zu entwickeln, um digitale Erlebnisse zu verbessern. Die Vielfalt und Dynamik des Programmierens inspirieren mich immer wieder aufs Neue, was mich dazu antreibt, zu innovieren und Spitzenleistungen zu erbringen.
                         </p>
                     </div>
                     <div class="content-3">
                         <img src="/assets/img/puzzle.svg" alt="">
-                        <p>
+                        <p *ngIf="(en$ | async)">
                             One of my personal strengths is my quick grasp of concepts. I seize every opportunity to deepen and improve my skills. This allows me to innovate and enhance complex code effectively, developing efficient solutions.                
+                        </p>
+                        <p *ngIf="(de$ | async)">
+                            Eine meiner persönlichen Stärken ist mein schnelles Auffassungsvermögen. Ich nutze jede Gelegenheit, um meine Fähigkeiten zu vertiefen und zu verbessern. Dies ermöglicht es mir, komplexen Code effektiv zu innovieren und zu optimieren und effiziente Lösungen zu entwickeln.                 
                         </p>
                     </div>
                 </div>
-                <div class="content-img">
-                    <img src="/assets/img/safa.png" alt="">
+                <div [class.margin-b-en]="(en$ | async)" [class.margin-b-de]="(de$ | async)" class="content-img">
+                    <img  src="/assets/img/safa.png" alt="">
                     <div class="background-shapes">
                         <img src="/assets/img/photo shadows.svg" alt="">
                     </div>

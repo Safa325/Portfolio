@@ -4,8 +4,11 @@
             <div class="title-header">
                 <div class="bar"></div><h1>Portfolio</h1>
             </div>
-            <span>
+            <span *ngIf="( en$ | async)">
                 Explore a selection of my work here - Interact with projects to see my skills in action.
+            </span>
+            <span *ngIf="( de$ | async)">
+                Erkunden Sie hier eine Auswahl meiner Arbeiten - Interagieren Sie mit Projekten, um meine Fähigkeiten in Aktion zu sehen.
             </span>
         </div>
         <div class="portfolio-container">

@@ -31,8 +31,8 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
-    max-height: 224px;
-    height: 100%;
+    min-height: 224px;
+    height: auto;
     max-width: 1024px;
     width: 100%;
     color: white;

@@ -2,14 +2,18 @@
     <div class="container">
 
         <div class="title">
-            <div class="t1" i18n="@@Iam">I am</div>
+            <div *ngIf="(en$ | async)" class="t1" >I am</div>
+            <div *ngIf="(de$ | async)" class="t1" >Ich bin</div>
             <div class="t2">
                 <h1>Safa Shamari</h1>
                 <h3>FRONTEND DEVELOPER</h3>
             </div>
         </div>
    
-        <a href="#contact"><button i18n> Let's talk!</button></a>
+        <a href="#contact">
+            <button *ngIf="(en$ | async)"> Let's talk!</button>
+            <button *ngIf="(de$ | async)"> Lass reden!</button>
+        </a>
         
     
         <svg id="shadow1" width="741" height="737" viewBox="0 0 741 737" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +64,8 @@
                 </div>
             </div>
             <div class="scroll">
-                <span>Scroll down</span>
+                <span *ngIf="(en$ | async)">Scroll down</span>
+                <span *ngIf="(de$ | async)">Scroll runter</span>
                 <img src="/assets/img/Vector-5.svg" alt="Arow down">
             </div>
         </div>

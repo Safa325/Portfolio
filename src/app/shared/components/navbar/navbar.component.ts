@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
+import { LanguageService } from '../../../language.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,10 +17,10 @@ export class NavbarComponent {
 isMenuHidden: boolean = false;
 menuBurgerOpen: boolean = false;
 closeAnimation: boolean = false;
-en:boolean = true;
-de:boolean = false;
+en$ = this.languageService.en$;
+de$ = this.languageService.de$;
 
-constructor() {
+constructor(private languageService: LanguageService) {
   this.checkInnertWidth(innerWidth)
 }
 
@@ -29,14 +30,10 @@ onResize(width: number) {
 }
 
 selectLanguage(){
-  if(this.de === true){
-    this.en = true;
-    this.de = false;
-  }else{
-    this.de = true;
-    this.en = false;
-  }
+  this.languageService.toggleLanguage();
 }
+
+
 
 checkInnertWidth(width:number){
   if(!this.menuBurgerOpen){
