@@ -20,12 +20,15 @@ section{
     align-items: flex-start;
     margin-top: 110px;
     max-width: 1920px;
-    padding: 8px 100px;
+    
     width: 100%;
     height: calc(100% - 110px);
     z-index: 5;
     
 
+    @media (max-width:2120px){
+        padding: 8px 100px;
+    }
     @media (max-width:1200px){
         padding: 8px 50px;
     }

@@ -1,21 +1,21 @@
 <nav>
     <div class="navbar">
-        <div class="logo"><a href="#landing-page">S<span class="s1">a</span>f<span class="s2">a</span></a></div>
+        <div class="logo"><a href="#landing-page" routerLink="">S<span class="s1">a</span>f<span class="s2">a</span></a></div>
     <div class="menu" [class.none]="isMenuHidden" [class.slideOut]="closeAnimation" >
         <a href="#about-me">
-            <span  *ngIf="(en$ | async)">About me</span>
+            <span  *ngIf="(en$ | async)" routerLink="">About me</span>
             <span  *ngIf="(de$ | async)">Über mich</span>
         </a>
         <a href="#skills">
-            <span *ngIf="(en$ | async)">Skills</span>
-            <span *ngIf="(de$ | async)">Fähigkeiten</span>
+            <span *ngIf="(en$ | async)" routerLink="">Skills</span>
+            <span *ngIf="(de$ | async)" routerLink="">Fähigkeiten</span>
         </a>
         <a href="#portfolio">
-            <span>Portfolio</span>
+            <span routerLink="">Portfolio</span>
         </a>
         <a [class.none]="!menuBurgerOpen"  href="#contact">
-            <span *ngIf="(en$ | async)">Contact</span>
-            <span *ngIf="(de$ | async)">Kontakt</span>
+            <span *ngIf="(en$ | async)" routerLink="">Contact</span>
+            <span *ngIf="(de$ | async)" routerLink="">Kontakt</span>
         </a>
         <div class="languege">
             <a (click)="selectLanguage()" ><span [class.selected]="(de$ | async)">DE</span></a> |

@@ -36,3 +36,25 @@ body{
     font-weight: 700;
     src: url('./assets/fonts/poppins-v21-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
+
+  /* Für Webkit-Browser (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 8px; /* Breite der Scrollbar */
+  height: 8px; /* Höhe der horizontalen Scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Farbe des Scrollbar-Tracks */
+  border-radius: 10px; /* Abgerundete Ecken des Scrollbar-Tracks */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b3549; /* Farbe des Scrollbar-Thumbs */
+  border-radius: 10px; /* Abgerundete Ecken des Scrollbar-Thumbs */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333d50; /* Farbe des Scrollbar-Thumbs beim Hover */
+}
+
+

@@ -23,7 +23,7 @@ nav{
     height: auto;
     max-width: 1920px;
     width: 100%;
-    padding: 37px 100px;
+    
     .logo{
         z-index: 10;
         font-size: 36px;
@@ -138,6 +138,11 @@ a{
     }
 }
 
+@media (max-width: 2120px ){
+    .navbar {
+        padding: 37px 100px;
+    }
+}
 @media (max-width: 1200px ){
     .navbar {
         padding: 37px 50px;

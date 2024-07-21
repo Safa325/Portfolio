@@ -21,7 +21,10 @@ section{
     width: 100%;
     height: calc(100%);
     margin-top: 110px;
-    padding: 24px 100px;
+   
+    @media (max-width:2120px){
+        padding: 24px 100px;
+    }
     @media (max-width:1200px){
         padding: 8px 50px;
     }

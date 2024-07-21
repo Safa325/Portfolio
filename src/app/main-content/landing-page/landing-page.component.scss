@@ -71,7 +71,8 @@ section{
 
 button{
 position: relative;
-width: 165px;
+min-width: 165px;
+width: auto;
 height: 58px;
 gap: 10px;
 border-radius: 10px;
@@ -148,12 +149,29 @@ animation: button 2s ease 75ms;
     align-items: center;
     gap: 0px;
     .bar{
+        left: -120px;
+        position: absolute;
         min-width: 100px;
         flex: 1;
         max-width: 100%;
         height: 1px;
         border: 2px solid #70E61C;
         border-radius: 2px;
+        @media (max-width:2120px) {
+            left: -20px;
+        }
+        @media (max-width:1200px) {
+            left: -70px;
+        }
+        @media (max-width:1100px) {
+            left: -90px;
+        }
+        @media (max-width:600px) {
+            left: 0;
+            min-width: 30px;
+            width: 22%;
+        }
+        
     }
 
     .socialMedia-container{
@@ -165,7 +183,16 @@ animation: button 2s ease 75ms;
         max-width: 1920px;
         width: 100vw;
         height: 346px;
-        padding: 80px 40px 160px;
+        padding:80px 0 160px;
+        @media (max-width:2120px) {
+            padding:80px 100px 160px 100px ;
+        }
+        @media (max-width:1200px) {
+            padding:80px 50px 160px ;
+        }
+        @media (max-width:1100px) {
+            padding:80px 25px 160px ;
+        }
         .icons{
             display: flex;
             justify-content: center;
@@ -195,13 +222,15 @@ animation: button 2s ease 75ms;
                 rotate: 90deg;
                 font-size: 23px;
                 font-family: 'Poppins';
-            }
-            @media (max-width:600px){
+            }  
+        }
+        @media (max-width:600px){
+            justify-content: center;
+            .scroll{
                 opacity: 0;
                 display: none;
-            }   
-            
-        }
+            }
+        } 
     }
 
     
