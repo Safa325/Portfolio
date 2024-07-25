@@ -29,6 +29,7 @@ export class ContactComponent {
     name: ['', [Validators.required, Validators.minLength(4)]],
     email: ['', [Validators.required, Validators.email]],
     message: ['', [Validators.required, Validators.minLength(10)]],
+    policy: [false, Validators.requiredTrue]
   });
   isSubmitted = false;
   showMessage = false;
@@ -49,7 +50,8 @@ export class ContactComponent {
   constructor(private fb: FormBuilder, private router: Router, private languageService: LanguageService) { }
 
   onSubmit() {
-    this.isSubmitted = true;
+    if(this.policyAccepted === true){
+      this.isSubmitted = true;
     if (this.registerForm.valid) {
       this.isSubmitted = false;
       this.http.post(this.post.endPoint, this.post.body(this.registerForm.value))
@@ -66,6 +68,7 @@ export class ContactComponent {
     } else {
       console.error('Form is invalid');
     }
+  }
   }
 
   scrollToTop() {

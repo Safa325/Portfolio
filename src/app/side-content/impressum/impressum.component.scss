@@ -1,8 +1,12 @@
 .container{
     display: flex;
+    left: 0;
+    right: 0;
+    margin: auto;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 2120px;
     width: 100%;
     min-height: calc(100vh - 300px);
     padding: 134px 100px;

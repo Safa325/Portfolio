@@ -2,7 +2,8 @@
   <div class="container">
     <div class="logo-container">
       <div class="logo"><a (click)="scrollToTop()" href="#landing-page" routerLink="">S<span class="s1">a</span>f<span class="s2">a</span></a></div>
-      <a (click)="scrollToTop()" routerLink="impressum">Imprint</a>
+     <a *ngIf="(en$ | async)" (click)="scrollToTop()" routerLink="impressum">Imprint</a>
+     <a *ngIf="(de$ | async)"(click)="scrollToTop()" routerLink="impressum">Impressum</a>
     </div>
     <div class="copy">
       <span>© Safa Shamari 2024</span>
